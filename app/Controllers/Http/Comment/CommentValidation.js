@@ -2,6 +2,7 @@
 const { validate, rule } = use('Validator')
 
 class CommentValidation {
+  
     commentEditRules(){
         return {
           id: 'required',

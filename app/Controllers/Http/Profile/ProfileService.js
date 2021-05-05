@@ -68,6 +68,17 @@ class ProfileService {
        return user
    }
           
+   async updatePhone(data,response, auth){
+       
+    //    const userInfo = await User.findBy('email', data.email)
+       
+      const user = await this.ProfileQuery.updateUserInfo('id', auth.user.id,{
+           phone : data.phone
+       })
+       
+       return user
+   }
+          
    async updateEmail(data,response, auth){
         const validation = await this.profileValidator.validateEmailUpdateData(data)
         

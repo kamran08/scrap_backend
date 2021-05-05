@@ -20,6 +20,18 @@ class FeedController {
      return this.FeedService.getFeed(ctx)
     }
     
+    async deleteFeed(ctx){
+        return this.FeedService.deleteFeed(ctx)
+    }
+    
+    async editFeed(ctx){
+        return this.FeedService.editFeed(ctx)
+    }
+    
+    async getGalryImages(ctx){
+        return this.FeedService.getGalryImages(ctx)
+    }
+    
     
 }
 

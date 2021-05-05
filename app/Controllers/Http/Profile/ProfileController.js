@@ -19,6 +19,10 @@ class ProfileController {
         return this.profileService.updateSocialLink(request.all(), response, auth)
     }
     
+    async updatePhone({request, response, auth}){
+        return this.profileService.updatePhone(request.all(), response, auth)
+    }
+    
     async emailUpdate({request, response, auth}){
         return this.profileService.updateEmail(request.all(), response, auth)
     }
