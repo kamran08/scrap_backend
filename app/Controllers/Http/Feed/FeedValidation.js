@@ -21,6 +21,25 @@ class FeedValidation {
             user_id: 'required'
         }
       }
+    feedUpdateRules(){
+        return {
+          user_id: 'required',
+          feedTxt: 'required',
+          id: 'required',
+      }
+    }
+    
+    
+    async validateUpdateFeed (data) {
+        return validate(data, this.feedUpdateRules())
+      }
+      
+      feedDeleteRules(){
+          return {
+            feed_id: 'required',
+            user_id: 'required'
+        }
+      }
     
     
     async validateDeleteFeed (data) {

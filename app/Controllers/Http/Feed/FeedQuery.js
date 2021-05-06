@@ -3,7 +3,9 @@ const Feed = use('App/Models/Feed')
 class FeedQuery { 
     createFeed(feed){
         return Feed.create(feed)
-        
+     } 
+    updateFeed(feed){
+        return Feed.query().where('id', feed.id).update(feed)
      } 
     
     getFeed(){

@@ -49,6 +49,30 @@ class FeedService {
         return ctx.response.status(201).json(feed)
         
     }
+    async updateFeed(ctx){
+      let data = ctx.request.all()
+      // return data
+      const validation = await this.FeedValidator.validateUpdateFeed(data)
+      
+      if (validation.fails()) {
+        return ctx.response.status(401).send({message:"Invalid data"})
+      }
+      if(data.user_id!=ctx.auth.user.id){
+        return ctx.response.status(401).send({message:"You are not authenticate user"})
+      }
+        const feed1 =  await this.FeedQuery.updateFeed({
+          id:data.id,
+          user_id : ctx.auth.user.id,
+          images : data.images,
+          feedTxt: data.feedTxt
+        })
+        
+        let feed = await this.FeedQuery.getSingleFeed(data.id)
+          feed.comments =[]
+          feed.isOpen = false
+        return ctx.response.status(200).json(feed)
+        
+    }
       
     async uploadImage(ctx){
       let data = ctx.request.all()

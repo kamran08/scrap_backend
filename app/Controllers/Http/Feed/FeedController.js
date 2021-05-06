@@ -11,6 +11,9 @@ class FeedController {
     async createFeed(ctx){
         return this.FeedService.createFeed(ctx)
     }
+    async updateFeed(ctx){
+        return this.FeedService.updateFeed(ctx)
+    }
     
     async uploadImages(ctx){
         return this.FeedService.uploadImage(ctx)
