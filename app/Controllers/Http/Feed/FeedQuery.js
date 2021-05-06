@@ -8,7 +8,11 @@ class FeedQuery {
         return Feed.query().where('id', feed.id).update(feed)
      } 
     
-    getFeed(){
+    getFeed(ctx){
+       let data = ctx.request.all()
+       if(data.user_id){
+          return Feed.query().with('user').where('user_id', ctx.auth.user.id).orderBy('id', 'desc').withCount('comment').withCount('likes').with('hasUserLike').fetch()
+       }
         return Feed.query().with('user').orderBy('id', 'desc').withCount('comment').withCount('likes').with('hasUserLike').fetch()
      }
      

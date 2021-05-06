@@ -14,7 +14,8 @@ class FeedService {
     }
       
     async getFeed(ctx){
-      let feed = await this.FeedQuery.getFeed()
+      let feed = await this.FeedQuery.getFeed(ctx)
+      return feed
       feed = feed.toJSON()
       // let feed = await this.FeedQuery.getSingleFeed(feed1.id)
       for(let d of feed){
