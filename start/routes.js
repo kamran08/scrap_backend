@@ -19,6 +19,7 @@ require('../app/Controllers/Http/Comment/routes')
 require('../app/Controllers/Http/Reply/routes')
 require('../app/Controllers/Http/SocialLogin/routes')
 require('../app/Controllers/Http/Like/routes')
+require('../app/Controllers/Http/Notification/routes')
 
 
 

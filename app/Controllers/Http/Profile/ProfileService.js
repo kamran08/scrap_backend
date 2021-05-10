@@ -3,7 +3,7 @@ const ProfileValidator = use('./ProfileValidation')
 const ProfileQuery = use('./ProfileQuery')
 const Mail = use('Mail')
 const moment = require('moment') 
-
+const sgMail = require('@sendgrid/mail')
 const User = use('App/Models/User')
 const Hash = use('Hash')
 const Helpers = use('Helpers')
@@ -96,11 +96,24 @@ class ProfileService {
            token_created_at : new Date()
        })
        
-       await Mail.send('emails.verify_email', userInfo.toJSON(), (message) => {
-        message.from('foo@bar.com')
-        message.to(data.newEmail)
-        message.subject('Please confirm your email address')
-      })
+      //  await Mail.send('emails.verify_email', userInfo.toJSON(), (message) => {
+      //   message.from('foo@bar.com')
+      //   message.to(data.newEmail)
+      //   message.subject('Please confirm your email address')
+      // })
+     // start
+        await Mail.send(
+          'emails.verify_email',
+          userInfo.toJSON(),
+          (message) => {
+            message
+              // .to('sa1021757@gmail.com')
+               message.to(userInfo.email)
+              .from('foo@bar.com')
+              .subject('Please confirm your email address');
+          }
+        );
+        //end
        
        return data.newEmail
    }
