@@ -76,7 +76,7 @@ class AuthValidation {
     passwordResetVerificationMessages () {
         return {
           'email.required':'Email is required',
-          'email.exists':'We cannot find user with provided email',
+          'email.exists':'invalid credentials',
         }
       }
     

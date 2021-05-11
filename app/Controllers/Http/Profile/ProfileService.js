@@ -109,7 +109,7 @@ class ProfileService {
             message
               // .to('sa1021757@gmail.com')
                message.to(userInfo.email)
-              .from('foo@bar.com')
+              .from('noreply@scrapabill.com')
               .subject('Please confirm your email address');
           }
         );
@@ -169,7 +169,7 @@ class ProfileService {
               userInfo.token = number
             
               await Mail.send('emails.verify_email', userInfo.toJSON(), (message) => {
-                message.from('foo@bar.com')
+                message.from('noreply@scrapabill.com')
                 message.to(userInfo.email)
                 message.subject('Please confirm your email address')
               })
@@ -198,7 +198,7 @@ class ProfileService {
         const user =  await this.ProfileQuery.updateUserInfo('id', userInfo.id,{
             token : null,
             token_created_at : null,
-            password : await Hash.make(data.password),
+            password : data.password
             
         })
         

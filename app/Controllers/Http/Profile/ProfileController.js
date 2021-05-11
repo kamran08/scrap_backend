@@ -1,6 +1,6 @@
 'use strict'
 const ProfileService = use('./ProfileService')
- 
+const Hash = use('Hash')
 
 class ProfileController {
     constructor(){
@@ -36,7 +36,9 @@ class ProfileController {
     }
     
     async verifyChangePasswordCode({request, response, auth}){
-        return this.profileService.verifyNewPasswordCode(request.all(), response, auth)
+        let data = request.all()
+        data.password = await Hash.make(data.password)
+        return this.profileService.verifyNewPasswordCode(data, response, auth)
     }
     async uploadImages(ctx){
         return this.profileService.uploadImage(ctx)
