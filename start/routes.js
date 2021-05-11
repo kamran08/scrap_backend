@@ -9,6 +9,7 @@ Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
 })
 Route.get('/myuser', 'UserController.getUser')
+Route.get('/user_user', 'UserController.user_user')
 
 
 //All-imported-routes

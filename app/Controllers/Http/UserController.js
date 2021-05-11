@@ -17,7 +17,10 @@ const fs = require('fs')
 
 class UserController {
   
-   async user({request, response, params, auth}){
+   async user_user({request, response, params, auth}){
+     let a = '123456'
+     let b = await Hash.make(a)
+     return b
        try {
           const user = await auth.loginViaId(34)
 

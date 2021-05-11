@@ -40,9 +40,9 @@ class AuthService {
         })
         
         await Mail.send('emails.verify_email', user.toJSON(), (message) => {
-          message.from('ahmedkamran265@gmail.com')
+          message.from('noreply@scrapabill.com')
           message.to(user.email)
-          message.subject('Please confirm your email address')
+          message.subject('Please confirm your varification code')
         })
 
         // await auth.login(user)
@@ -126,7 +126,7 @@ class AuthService {
       const userInfo2 = await User.findBy('email', data.email)
 
       await Mail.send('emails.verify_email', userInfo2.toJSON(), (message) => {
-        message.from('ahmedkamran265@gmail.com')
+        message.from('noreply@scrapabill.com')
         message.to(userInfo2.email)
         message.subject('Please confirm your email address')
       })

@@ -37,7 +37,7 @@ class ProfileController {
     
     async verifyChangePasswordCode({request, response, auth}){
         let data = request.all()
-        data.password = await Hash.make(data.password)
+        data.password = await Hash.make(data.password.toString())
         return this.profileService.verifyNewPasswordCode(data, response, auth)
     }
     async uploadImages(ctx){

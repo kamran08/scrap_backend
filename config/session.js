@@ -67,9 +67,9 @@ module.exports = {
   httpOnly: true,
   path: '/',
   secure:true,
-  // sameSite: 'strict',
-  domain: Env.get('COOKIE_DOMAIN', null),
-  // domain: '.scrapabill.com',
+  sameSite: 'strict',
+  // domain: Env.get('COOKIE_DOMAIN', null),
+  domain: '.scrapabill.com',
 },
 
   /*

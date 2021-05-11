@@ -5,6 +5,7 @@ const Mail = use('Mail')
 const moment = require('moment') 
 const sgMail = require('@sendgrid/mail')
 const User = use('App/Models/User')
+// const Hash = use('Hash')
 const Hash = use('Hash')
 const Helpers = use('Helpers')
 const Env = use('Env')
@@ -171,7 +172,7 @@ class ProfileService {
               await Mail.send('emails.verify_email', userInfo.toJSON(), (message) => {
                 message.from('noreply@scrapabill.com')
                 message.to(userInfo.email)
-                message.subject('Please confirm your email address')
+                message.subject('Please confirm your varification code')
               })
               
               return data.newPassword
