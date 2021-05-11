@@ -150,7 +150,7 @@ class ProfileService {
         
         
         
-        const userInfo = await User.findBy('email',auth.user.email)
+        let userInfo = await User.findBy('email',auth.user.email)
         
         const check = await Hash.verify(data.currentPassword, userInfo.password)
         if (check){
@@ -166,6 +166,7 @@ class ProfileService {
             // user.token_created_at = new Date()
             // user.token = number
             // await user.save()
+              userInfo.token = number
             
               await Mail.send('emails.verify_email', userInfo.toJSON(), (message) => {
                 message.from('foo@bar.com')

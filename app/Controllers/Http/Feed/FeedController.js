@@ -22,6 +22,9 @@ class FeedController {
     async getFeed(ctx){
      return this.FeedService.getFeed(ctx)
     }
+    async getFeed1(ctx){
+     return this.FeedService.getFeed1(ctx)
+    }
     
     async deleteFeed(ctx){
         return this.FeedService.deleteFeed(ctx)

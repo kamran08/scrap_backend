@@ -13,8 +13,19 @@ class FeedService {
       this.FeedQuery = new FeedQuery()
     }
       
+    async getFeed1(ctx){
+        let feed = await this.FeedQuery.getFeed1(ctx)
+        return feed
+      }
     async getFeed(ctx){
       let feed = await this.FeedQuery.getFeed(ctx)
+      let feedUser = await this.FeedQuery.getFeedUser(ctx)
+      await this.FeedQuery.updateView(ctx, feedUser.view)
+    return  {
+        feedData:feed,
+        feedUser:feedUser
+
+      }
       return feed
       feed = feed.toJSON()
       // let feed = await this.FeedQuery.getSingleFeed(feed1.id)
@@ -128,7 +139,17 @@ class FeedService {
         return ctx.response.status(401).send({message: 'Your are not a authenticate user!'})
       }
       let alldata = []
-      let images =await  this.FeedQuery.getGalryImages('user_id',ctx.auth.user.id)
+      let images =[]
+      let feedUser =[]
+      let data = ctx.request.all()
+      if(data.user_id && data.user_id!=0) {
+        images =await  this.FeedQuery.getGalryImages('user_id',data.user_id)
+      }
+      else{
+
+        images =await  this.FeedQuery.getGalryImages('user_id',ctx.auth.user.id)
+      }
+      feedUser = await this.FeedQuery.getFeedUser(ctx)
       images = images.toJSON()
        for(let d of images){
           d.images = JSON.parse(d.images)
@@ -136,7 +157,10 @@ class FeedService {
         }
         // d.images = JSON.parse(d.images)"
        
-       return alldata
+       return {
+         alldata:alldata,
+         feedUser:feedUser
+      }
    }
       
       

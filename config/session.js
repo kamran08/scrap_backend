@@ -52,7 +52,7 @@ module.exports = {
   |  '2h', '10d', '5y', '2.5 hrs'
   |
   */
-  age: '2h',
+  age: '10d',
 
   /*
   |--------------------------------------------------------------------------
@@ -66,8 +66,10 @@ module.exports = {
  cookie: {
   httpOnly: true,
   path: '/',
+  secure:true,
   sameSite: 'strict',
-  domain: Env.get('COOKIE_DOMAIN', null),
+  // domain: Env.get('COOKIE_DOMAIN', null),
+  domain: '.scrapabill.com',
 },
 
   /*
