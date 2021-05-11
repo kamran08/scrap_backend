@@ -99,8 +99,9 @@ class FeedService {
           overwrite: true
       
         })
-        let siteUrl = Env.get('APP_URL')
-        let upFile = `${siteUrl}/uploads/${name}`
+        // let siteUrl = Env.get('APP_URL')
+        // let upFile = `${siteUrl}/uploads/${name}`
+        let upFile = `https://api.scrapabill.com/uploads/${name}`
         return upFile
         
     }
