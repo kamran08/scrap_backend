@@ -10,7 +10,11 @@ class FeedQuery {
      } 
     
     getFeed1(ctx){
-        return Feed.query().with('user').orderBy('id', 'desc').withCount('comment').withCount('likes').with('hasUserLike').fetch()
+        return Feed.query().with('user').orderBy('id', 'desc').withCount('comment').withCount('likes').with('hasUserLike'
+         ,(builder) => {
+            builder.where('user_id', ctx.auth.user.id)
+        }
+        ).fetch()
      }
     getFeed(ctx){
        let data = ctx.request.all()
