@@ -66,10 +66,10 @@ module.exports = {
  cookie: {
   httpOnly: true,
   path: '/',
-  // secure:true,
+  secure:true,
   sameSite: 'strict',
-  domain: Env.get('COOKIE_DOMAIN', null),
-  // domain: '.scrapabill.com',
+  // domain: Env.get('COOKIE_DOMAIN', null),
+  domain: '.scrapabill.com',
 },
 
   /*
